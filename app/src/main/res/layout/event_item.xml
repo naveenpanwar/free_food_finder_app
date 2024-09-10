@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/LV_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dummy Title"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/LV_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dummy Title"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/LV_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ImageView>
+
+
+</LinearLayout>
