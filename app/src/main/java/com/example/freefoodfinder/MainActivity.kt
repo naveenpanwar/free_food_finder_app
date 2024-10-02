@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.freefoodfinder.models.Event
 import com.example.freefoodfinder.network.ApiClient
 import com.example.freefoodfinder.utils.SessionManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,6 +17,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
+    lateinit var floatingAddEventButton: FloatingActionButton
     lateinit var recyclerViewAdapter: EventsAdapter
     lateinit var apiClient: ApiClient
     lateinit var sessionManager: SessionManager
@@ -24,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.my_toolbar))
+
+        floatingAddEventButton = findViewById(R.id.fab)
+        floatingAddEventButton.setOnClickListener {
+            startActivity(Intent(this, CreateEvent::class.java))
+        }
 
         sessionManager = SessionManager(this)
 

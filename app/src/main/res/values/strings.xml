@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Free Food Finder</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_create_event">CreateEventActivity</string>
+    <string name="title_activity_view_event">ViewEventActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>

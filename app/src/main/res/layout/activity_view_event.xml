@@ -8,6 +8,8 @@
     android:padding="16dp"
     tools:context=".ViewEvent">
 
+    <include layout="@layout/appbar" />
+
     <TextView
         android:id="@+id/textViewId"
         android:layout_width="match_parent"

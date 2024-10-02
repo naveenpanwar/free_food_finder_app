@@ -14,7 +14,11 @@ class EventsAdapter(var context: Context, var list: List<Event>) : RecyclerView.
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
     {
         var title = view.findViewById<TextView>(R.id.LV_title);
+        var description = view.findViewById<TextView>(R.id.LV_description)
         var location = view.findViewById<TextView>(R.id.LV_location);
+        var date = view.findViewById<TextView>(R.id.LV_date)
+        var start_time = view.findViewById<TextView>(R.id.LV_start_time)
+        var end_time = view.findViewById<TextView>(R.id.LV_end_time)
         var image = view.findViewById<ImageView>(R.id.LV_image);
 
     }
@@ -31,6 +35,10 @@ class EventsAdapter(var context: Context, var list: List<Event>) : RecyclerView.
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = list[position].title;
         holder.location.text = list[position].location;
+        holder.description.text = list[position].description
+        holder.date.text = list[position].date
+        holder.start_time.text = list[position].startTime
+        holder.end_time.text = list[position].endTime
         Glide.with(context).load(list[position].image).into(holder.image);
     }
 }
