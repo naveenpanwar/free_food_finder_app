@@ -9,4 +9,15 @@
     app:layout_constraintTop_toTopOf="parent"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <ImageButton
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/baseline_logout_24"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Logout"
+        android:layout_gravity="end"
+        android:padding="8dp" />
+
 </androidx.appcompat.widget.Toolbar>

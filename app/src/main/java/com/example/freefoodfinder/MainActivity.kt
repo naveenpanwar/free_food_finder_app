@@ -3,6 +3,8 @@ package com.example.freefoodfinder
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         apiClient = ApiClient()
         fetchPosts()
+
+        val logoutButton: ImageButton = findViewById(R.id.btn_logout)
+        logoutButton.setOnClickListener {
+            sessionManager.logout()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
     }
 
     private fun fetchPosts() {
@@ -55,11 +65,16 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
                     var data = response.body()
-                    if (data != null) {
-                        recyclerViewAdapter = EventsAdapter(baseContext, data)
+                    data?.let {
+                        recyclerViewAdapter = EventsAdapter(baseContext, it) { eventId ->
+                            val intent = Intent(this@MainActivity, ViewEvent::class.java).apply {
+                                putExtra("ITEM_ID", eventId)
+                            }
+                            startActivity(intent)
+                        }
                         recyclerView.adapter = recyclerViewAdapter
-                        Log.d("Data", data.toString() )
-                    } else {
+                        Log.d("Data", it.toString() )
+                    } ?: run {
                         Log.d("Data", "Is NULL" )
                     }
                 }

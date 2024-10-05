@@ -183,8 +183,6 @@ class CreateEvent : AppCompatActivity() {
                     // Pass the item details to the ShowItemActivity
                     val intent = Intent(this@CreateEvent, ViewEvent::class.java).apply {
                         putExtra("ITEM_ID", createdItem?.id)
-                        putExtra("ITEM_NAME", createdItem?.title)
-                        putExtra("ITEM_DESCRIPTION", createdItem?.description)
                     }
                     startActivity(intent)
                 } else {

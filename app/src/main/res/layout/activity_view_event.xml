@@ -5,27 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".ViewEvent">
 
     <include layout="@layout/appbar" />
-
-    <TextView
-        android:id="@+id/textViewId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ID: " />
-
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name: " />
-
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Description: " />
+    <include layout="@layout/event_item" />
 
 </LinearLayout>

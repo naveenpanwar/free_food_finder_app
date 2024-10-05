@@ -10,8 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.freefoodfinder.models.Event
 
-class EventsAdapter(var context: Context, var list: List<Event>) : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+class EventsAdapter(
+    var context: Context,
+    private val itemList: List<Event>,
+    private val onItemClick: (Int) -> Unit
+) : RecyclerView.Adapter<EventsAdapter.EventViewHolder>() {
+
+    class EventViewHolder(view: View) : RecyclerView.ViewHolder(view)
     {
         var title = view.findViewById<TextView>(R.id.LV_title);
         var description = view.findViewById<TextView>(R.id.LV_description)
@@ -23,22 +28,27 @@ class EventsAdapter(var context: Context, var list: List<Event>) : RecyclerView.
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         var view = LayoutInflater.from(context).inflate(R.layout.event_item, parent, false);
-        return ViewHolder(view);
+        return EventViewHolder(view);
     }
 
     override fun getItemCount(): Int {
-        return list.count();
+        return itemList.count();
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.title.text = list[position].title;
-        holder.location.text = list[position].location;
-        holder.description.text = list[position].description
-        holder.date.text = list[position].date
-        holder.start_time.text = list[position].startTime
-        holder.end_time.text = list[position].endTime
-        Glide.with(context).load(list[position].image).into(holder.image);
+    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
+        val event = itemList[position]
+        holder.title.text = event.title;
+        holder.location.text = event.location;
+        holder.description.text = event.description
+        holder.date.text = event.date
+        holder.start_time.text = event.startTime
+        holder.end_time.text = event.endTime
+        Glide.with(context).load(event.image).into(holder.image);
+
+        holder.itemView.setOnClickListener {
+            event.id?.let { onItemClick(it) } ?: run { print("Id is null") }
+        }
     }
 }

@@ -29,7 +29,7 @@ interface APIInterface {
         @Part image: MultipartBody.Part?
     ): Call<Event>
 
-    @GET("event/{id}")
+    @GET("events/{id}")
     fun getEvent(@Path("id") id: Int): Call<Event>
 
     @GET("events/")
